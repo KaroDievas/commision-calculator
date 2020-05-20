@@ -1,0 +1,16 @@
+{
+    "name": "kd/commision-calculator",
+    "type": "project",
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "authors": [
+        {
+            "name": "KaroDievas",
+            "email": "admin@l2topai.eu"
+        }
+    ]
+}
