@@ -67,7 +67,7 @@ class CommissionCalculator
                 $commissionFee = self::EU_COMMISSION;
             }
 
-            echo $fixedAmount * $commissionFee;
+            echo ceil($fixedAmount * $commissionFee * 100)/100;
             print "\n";
         }
     }
