@@ -21,7 +21,7 @@ foreach (explode("\n", file_get_contents($argv[1])) as $row) {
     if ($value[2] == 'EUR' or $rate == 0) {
         $amntFixed = $value[1];
     }
-    if ($value[2] != 'EUR' or $rate > 0) {
+    if ($value[2] != 'EUR' and $rate > 0) {
         $amntFixed = $value[1] / $rate;
     }
 
