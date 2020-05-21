@@ -86,6 +86,12 @@ class CommissionCalculator
     private function getFixedAmountByExchangeRateAndCurrencyAndAmount($exchangeRate, $currency, $amount): float
     {
         if ($currency != 'EUR' || $exchangeRate > 0) {
+
+            // correct division by zero
+            // this do not change result but do not raise error in case currency not EUR and exchange rate is 0
+            if ($exchangeRate == 0) {
+                $exchangeRate = 1;
+            }
             return $amount / $exchangeRate;
         }
         return $amount;
