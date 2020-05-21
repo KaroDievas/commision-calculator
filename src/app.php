@@ -7,5 +7,5 @@ if (!isset($argv[1])) {
     throw new MissingParameterException('Missing file');
 }
 
-$commissionCalculator = new \KD\CommissionCalculator\Main\CommissionCalculator($argv[1]);
-$commissionCalculator->run();
+$commissionCalculator = new \KD\CommissionCalculator\Main\CommissionCalculator();
+$commissionCalculator->run(file($argv[1]));

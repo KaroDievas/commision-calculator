@@ -18,8 +18,6 @@ use phpDocumentor\Reflection\Types\Boolean;
 
 class CommissionCalculator
 {
-    private $file;
-
     /**
      * @var Validator
      */
@@ -38,17 +36,18 @@ class CommissionCalculator
     CONST EU_COMMISSION = 0.01;
     CONST NON_EU_COMMISSION = 0.02;
 
-    public function __construct($file)
+    public function __construct()
     {
-        $this->file = $file;
         $this->validator = new Validator();
         $this->binProvider = new BinListProvider();
         $this->exchangeRateProvider = new ExchangeRatesApiProvider();
     }
 
-    public function run()
+    /**
+     * @throws \KD\CommissionCalculator\Exception\InvalidDataException
+     */
+    public function run($rows)
     {
-        $rows = file($this->file);
         foreach ($rows as $row) {
             $line = json_decode($row, true);
             $this->validator->validateLine($line);
