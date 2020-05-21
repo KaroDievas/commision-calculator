@@ -13,7 +13,10 @@ namespace KD\CommissionCalculator\Main;
 
 use CommissionCalculator\Validator;
 use KD\CommissionCalculator\Providers\Bin\BinListProvider;
+use KD\CommissionCalculator\Providers\Bin\BinProviderInterface;
+use KD\CommissionCalculator\Providers\ExchangeRate\ExchangeRateProviderInterface;
 use KD\CommissionCalculator\Providers\ExchangeRate\ExchangeRatesApiProvider;
+use KD\CommissionCalculator\Validator\ValidatorInterface;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class CommissionCalculator
@@ -36,11 +39,11 @@ class CommissionCalculator
     CONST EU_COMMISSION = 0.01;
     CONST NON_EU_COMMISSION = 0.02;
 
-    public function __construct()
+    public function __construct(ValidatorInterface $validator, BinProviderInterface $binProvider, ExchangeRateProviderInterface $exchangeRateProvider)
     {
-        $this->validator = new Validator();
-        $this->binProvider = new BinListProvider();
-        $this->exchangeRateProvider = new ExchangeRatesApiProvider();
+        $this->validator = $validator;
+        $this->binProvider = $binProvider;
+        $this->exchangeRateProvider = $exchangeRateProvider;
     }
 
     /**

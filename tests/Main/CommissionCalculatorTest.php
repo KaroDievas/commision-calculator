@@ -21,4 +21,13 @@ class CommissionCalculatorTest extends TestCase
         $this->commissionCalculator = new CommissionCalculator();
     }
 
+    public function testCorrectCommission()
+    {
+
+    }
+
+    protected function tearDown()
+    {
+        unset($this->commissionCalculator);
+    }
 }

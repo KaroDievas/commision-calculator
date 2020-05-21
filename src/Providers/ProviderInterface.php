@@ -9,7 +9,7 @@
 namespace KD\CommissionCalculator\Providers;
 
 
-interface Provider
+interface ProviderInterface
 {
 
 }

@@ -11,9 +11,9 @@ namespace KD\CommissionCalculator\Providers\Bin;
 
 
 use KD\CommissionCalculator\Exception\InvalidDataException;
-use KD\CommissionCalculator\Providers\Provider;
+use KD\CommissionCalculator\Providers\ProviderInterface;
 
-class BinListProvider implements Provider
+class BinListProvider implements ProviderInterface, BinProviderInterface
 {
     CONST PROVIDER_URL = 'https://lookup.binlist.net';
 

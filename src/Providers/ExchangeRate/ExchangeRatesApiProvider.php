@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace KD\CommissionCalculator\Providers\ExchangeRate;
 
 
-use KD\CommissionCalculator\Providers\Provider;
+use KD\CommissionCalculator\Providers\ProviderInterface;
 
-class ExchangeRatesApiProvider implements Provider
+class ExchangeRatesApiProvider implements ProviderInterface, ExchangeRateProviderInterface
 {
     CONST PROVIDER_URL = 'https://api.exchangeratesapi.io/latest';
 

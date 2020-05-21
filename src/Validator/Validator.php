@@ -11,9 +11,10 @@ namespace CommissionCalculator;
 
 
 use KD\CommissionCalculator\Exception\InvalidDataException;
+use KD\CommissionCalculator\Validator\ValidatorInterface;
 use Payum\ISO4217\ISO4217;
 
-class Validator
+class Validator implements ValidatorInterface
 {
     private $currencyValidator;
 
