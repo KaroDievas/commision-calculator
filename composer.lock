@@ -4,8 +4,73 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7f5161c404e4b2c28672eb3ea5ffb33",
-    "packages": [],
+    "content-hash": "deb5af0c241e715d010b15e4fbc00ba7",
+    "packages": [
+        {
+            "name": "payum/iso4217",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/iso4217.git",
+                "reference": "6a45480e2818350dea58b7a076d0115aa7ff5789"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/iso4217/zipball/6a45480e2818350dea58b7a076d0115aa7ff5789",
+                "reference": "6a45480e2818350dea58b7a076d0115aa7ff5789",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Payum\\ISO4217\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Payum/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "ISO 4217 PHP Library",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "4217",
+                "ISO 4217",
+                "currencies",
+                "iso",
+                "library"
+            ],
+            "time": "2016-08-04T08:15:12+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
