@@ -17,7 +17,6 @@ use KD\CommissionCalculator\Providers\Bin\BinProviderInterface;
 use KD\CommissionCalculator\Providers\ExchangeRate\ExchangeRateProviderInterface;
 use KD\CommissionCalculator\Providers\ExchangeRate\ExchangeRatesApiProvider;
 use KD\CommissionCalculator\Validator\ValidatorInterface;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class CommissionCalculator
 {
@@ -39,39 +38,43 @@ class CommissionCalculator
     CONST EU_COMMISSION = 0.01;
     CONST NON_EU_COMMISSION = 0.02;
 
-    public function __construct(ValidatorInterface $validator, BinProviderInterface $binProvider, ExchangeRateProviderInterface $exchangeRateProvider)
-    {
+    public function __construct(
+        ValidatorInterface $validator,
+        BinProviderInterface $binProvider,
+        ExchangeRateProviderInterface $exchangeRateProvider
+    ) {
         $this->validator = $validator;
         $this->binProvider = $binProvider;
         $this->exchangeRateProvider = $exchangeRateProvider;
     }
 
     /**
+     * @param $line
+     * @return float|int
      * @throws \KD\CommissionCalculator\Exception\InvalidDataException
      */
-    public function run($rows)
+    public function run($line)
     {
-        foreach ($rows as $row) {
-            $line = json_decode($row, true);
-            $this->validator->validateLine($line);
 
-            $binCountryCode = $this->binProvider->getAlpha2CountryCodeByBin($line['bin']);
+        $this->validator->validateLine($line);
 
-            $currency = $line['currency'];
-            $exchangeRate = $this->exchangeRateProvider->getExchangeRateByCurrencyCode($currency);
+        $binCountryCode = $this->binProvider->getAlpha2CountryCodeByBin($line['bin']);
 
-            $amount = $line['amount'];
+        $currency = $line['currency'];
+        $exchangeRate = $this->exchangeRateProvider->getExchangeRateByCurrencyCode($currency);
 
-            $fixedAmount = $this->getFixedAmountByExchangeRateAndCurrencyAndAmount($exchangeRate, $currency, (float)$amount);
+        $amount = $line['amount'];
 
-            $commissionFee = self::NON_EU_COMMISSION;
-            if ($this->isEu($binCountryCode)) {
-                $commissionFee = self::EU_COMMISSION;
-            }
+        $fixedAmount = $this->getFixedAmountByExchangeRateAndCurrencyAndAmount($exchangeRate, $currency,
+            (float)$amount);
 
-            echo ceil($fixedAmount * $commissionFee * 100)/100;
-            print "\n";
+        $commissionFee = self::NON_EU_COMMISSION;
+        if ($this->isEu($binCountryCode)) {
+            $commissionFee = self::EU_COMMISSION;
         }
+
+        return ceil($fixedAmount * $commissionFee * 100) / 100;
+
     }
 
     /**

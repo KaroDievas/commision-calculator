@@ -13,4 +13,10 @@ if (!isset($argv[1])) {
 
 $commissionCalculator = new CommissionCalculator(new Validator(), new BinListProvider(),
     new ExchangeRatesApiProvider());
-$commissionCalculator->run(file($argv[1]));
+
+$rows = file($argv[1]);
+foreach ($rows as $row) {
+    $line = json_decode($row, true);
+
+    echo sprintf("%s\n", $commissionCalculator->run($line));
+}
