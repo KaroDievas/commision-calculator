@@ -50,7 +50,7 @@ RUN touch /var/log/cron.log
 
 CMD cron && tail -f /var/log/cron.log
 
-WORKDIR /home/wwwroot/
+WORKDIR /home/commision-calculator/
 ##</romaricp>##
 
 EXPOSE 9000
